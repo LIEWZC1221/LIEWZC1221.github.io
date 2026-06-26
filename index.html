@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liew Zhen Chuan | Graduate AI Engineer Portfolio</title>
+  <meta name="description" content="Graduate AI Engineer portfolio for Liew Zhen Chuan, showcasing AI engineering, machine learning, full-stack architecture, and QuantForge Pro." />
+  <style>
+    :root {
+      --bg: #f4f0e8;
+      --surface: #fffaf0;
+      --ink: #111111;
+      --muted: #5d5a53;
+      --line: #181818;
+      --red: #e23d28;
+      --blue: #155dfc;
+      --yellow: #f1c232;
+      --green: #14885f;
+      --shadow: 10px 10px 0 #111111;
+      --soft-shadow: 0 24px 80px rgba(17, 17, 17, 0.12);
+      --radius: 22px;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(17,17,17,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,0.035) 1px, transparent 1px),
+        var(--bg);
+      background-size: 34px 34px;
+      overflow-x: hidden;
+    }
+
+    body.dark {
+      --bg: #111111;
+      --surface: #191919;
+      --ink: #f7f2e8;
+      --muted: #b7b0a3;
+      --line: #f7f2e8;
+      --shadow: 10px 10px 0 #f7f2e8;
+      --soft-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+      background:
+        linear-gradient(rgba(247,242,232,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(247,242,232,0.04) 1px, transparent 1px),
+        var(--bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 8px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      background: var(--yellow);
+      font-family: var(--mono);
+      font-size: 13px;
+      box-shadow: 3px 3px 0 var(--line);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .nav-links a,
+    .toggle {
+      border: 1.8px solid transparent;
+      border-radius: 999px;
+      padding: 10px 12px;
+      color: var(--muted);
+      transition: 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .toggle:hover {
+      color: var(--ink);
+      border-color: var(--line);
+      background: color-mix(in srgb, var(--yellow) 25%, transparent);
+    }
+
+    .toggle {
+      cursor: pointer;
+      background: transparent;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: 84vh;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: center;
+      padding: 84px 0 56px;
+    }
+
+    .kicker {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding: 9px 13px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 var(--line);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px color-mix(in srgb, var(--green) 18%, transparent);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(3.6rem, 9vw, 8.2rem);
+      line-height: .86;
+      letter-spacing: -0.085em;
+      font-weight: 950;
+    }
+
+    .hero h1 span {
+      position: relative;
+      display: inline-block;
+      padding-right: .08em;
+    }
+
+    .hero h1 span::after {
+      content: "";
+      position: absolute;
+      left: .02em;
+      bottom: .02em;
+      width: 96%;
+      height: .16em;
+      background: var(--blue);
+      z-index: -1;
+      transform: skew(-10deg);
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 28px 0 0;
+      font-size: clamp(1.04rem, 1.8vw, 1.3rem);
+      line-height: 1.65;
+      color: var(--muted);
+      font-weight: 560;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 18px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      transition: 160ms ease;
+      cursor: pointer;
+    }
+
+    .btn.primary { background: var(--ink); color: var(--bg); }
+    .btn.secondary { background: var(--surface); color: var(--ink); }
+
+    .btn:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0 var(--line);
+    }
+
+    .hero-panel {
+      position: relative;
+      min-height: 560px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 24%, var(--yellow) 0 10%, transparent 10.5%),
+        radial-gradient(circle at 78% 26%, var(--blue) 0 8%, transparent 8.5%),
+        radial-gradient(circle at 58% 78%, var(--red) 0 12%, transparent 12.5%);
+      opacity: .92;
+    }
+
+    .terminal {
+      position: absolute;
+      inset: 28px;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+      box-shadow: 10px 10px 0 rgba(17, 17, 17, .35);
+    }
+
+    body.dark .terminal { box-shadow: 10px 10px 0 rgba(247, 242, 232, .28); }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--line);
+      padding: 12px 14px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .lights { display: flex; gap: 7px; }
+    .lights i { width: 11px; height: 11px; border: 1.8px solid var(--line); border-radius: 50%; display: block; }
+    .lights i:nth-child(1) { background: var(--red); }
+    .lights i:nth-child(2) { background: var(--yellow); }
+    .lights i:nth-child(3) { background: var(--green); }
+
+    .terminal-body {
+      position: relative;
+      flex: 1;
+      padding: 20px;
+      display: grid;
+      align-content: end;
+      gap: 14px;
+    }
+
+    .code-line {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .code-line strong { color: var(--ink); }
+    .code-line .blue { color: var(--blue); font-weight: 900; }
+    .code-line .red { color: var(--red); font-weight: 900; }
+    .code-line .green { color: var(--green); font-weight: 900; }
+
+    #marketCanvas {
+      width: 100%;
+      height: 190px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background:
+        linear-gradient(rgba(17,17,17,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,.06) 1px, transparent 1px),
+        color-mix(in srgb, var(--surface) 72%, var(--yellow) 8%);
+      background-size: 20px 20px;
+    }
+
+    .section {
+      padding: 76px 0;
+      border-top: 2px solid color-mix(in srgb, var(--line) 22%, transparent);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .7fr 1fr;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.25rem, 5vw, 5.4rem);
+      line-height: .9;
+      letter-spacing: -0.075em;
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 1.04rem;
+      font-weight: 560;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .metrics {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      position: relative;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 22px;
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+    }
+
+    .card.block-shadow { box-shadow: var(--shadow); }
+
+    .metric-card {
+      min-height: 168px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric-number {
+      font-size: clamp(2.4rem, 4.5vw, 4.7rem);
+      line-height: .9;
+      letter-spacing: -0.08em;
+      font-weight: 950;
+    }
+
+    .metric-label {
+      margin-top: 12px;
+      color: var(--muted);
+      font-weight: 780;
+      line-height: 1.35;
+    }
+
+    .metric-card:nth-child(1) { background: color-mix(in srgb, var(--yellow) 42%, var(--surface)); }
+    .metric-card:nth-child(2) { background: color-mix(in srgb, var(--blue) 12%, var(--surface)); }
+    .metric-card:nth-child(3) { background: color-mix(in srgb, var(--red) 12%, var(--surface)); }
+    .metric-card:nth-child(4) { background: color-mix(in srgb, var(--green) 13%, var(--surface)); }
+
+
+
+    figure { margin: 0; }
+
+    .about-layout {
+      grid-template-columns: .82fr 1.18fr;
+      align-items: stretch;
+    }
+
+    .portrait-card {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--yellow) 32%, transparent), transparent 46%),
+        var(--surface);
+    }
+
+    .intro-card {
+      display: grid;
+      align-content: start;
+      gap: 18px;
+    }
+
+    .intro-facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .fact-tile {
+      min-height: 122px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      padding: 15px;
+      background: color-mix(in srgb, var(--surface) 82%, white 7%);
+    }
+
+    .fact-tile strong {
+      display: block;
+      font-size: .92rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .fact-tile span {
+      display: block;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 650;
+      line-height: 1.45;
+    }
+
+    .media-slot {
+      position: relative;
+      min-height: 320px;
+      border: 2px dashed var(--line);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--blue) 10%, transparent), transparent 38%),
+        repeating-linear-gradient(-45deg,
+          color-mix(in srgb, var(--line) 7%, transparent) 0 10px,
+          transparent 10px 22px),
+        color-mix(in srgb, var(--surface) 86%, var(--yellow) 8%);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .media-slot.tall { min-height: 510px; }
+    .media-slot.wide { min-height: unset; aspect-ratio: 16 / 9; }
+
+    .slot-empty {
+      width: min(86%, 420px);
+      display: grid;
+      place-items: center;
+      gap: 10px;
+      text-align: center;
+      padding: 24px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--surface) 84%, transparent);
+      backdrop-filter: blur(8px);
+      box-shadow: 6px 6px 0 color-mix(in srgb, var(--line) 86%, transparent);
+      z-index: 1;
+    }
+
+    .slot-empty strong {
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    .slot-empty span {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .slot-empty code {
+      display: inline-block;
+      max-width: 100%;
+      border: 1.8px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--yellow);
+      color: #111111;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 900;
+      white-space: normal;
+    }
+
+    .slot-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 2;
+    }
+
+    .profile-img { object-fit: cover; }
+    .shot-img {
+      object-fit: contain;
+      background: #070707;
+      padding: 8px;
+    }
+
+    .slot-note {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    .demo-block {
+      display: grid;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .demo-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 4px 0 0;
+    }
+
+    .demo-title-row h3 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 3.1rem);
+    }
+
+    .demo-count {
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--yellow);
+      color: #111111;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 var(--line);
+    }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .shot-card {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      padding: 16px;
+    }
+
+    .shot-card.large { grid-column: span 7; }
+    .shot-card.medium { grid-column: span 5; }
+    .shot-card.small { grid-column: span 4; }
+    .shot-card.half { grid-column: span 6; }
+
+    .shot-card h3 {
+      margin: 0;
+      font-size: clamp(1.18rem, 2vw, 1.65rem);
+      letter-spacing: -.04em;
+    }
+
+    .shot-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    .bento {
+      grid-template-columns: 1.1fr .9fr;
+      align-items: stretch;
+    }
+
+    .project-main {
+      min-height: 520px;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--blue) 12%, transparent), transparent 40%),
+        var(--surface);
+    }
+
+    .project-tag {
+      width: fit-content;
+      margin-bottom: 18px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: var(--yellow);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.55rem, 3vw, 3rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .body-text {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+      font-weight: 540;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      border: 1.8px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: color-mix(in srgb, var(--surface) 80%, white 6%);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .architecture {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .node {
+      min-height: 102px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .node strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .node small {
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-top: 8px;
+    }
+
+    .node:nth-child(1) { background: color-mix(in srgb, var(--blue) 16%, var(--surface)); }
+    .node:nth-child(2) { background: color-mix(in srgb, var(--yellow) 44%, var(--surface)); }
+    .node:nth-child(3) { background: color-mix(in srgb, var(--red) 14%, var(--surface)); }
+    .node:nth-child(4) { background: color-mix(in srgb, var(--green) 14%, var(--surface)); }
+    .node:nth-child(5) { background: var(--surface); }
+    .node:nth-child(6) { background: color-mix(in srgb, var(--blue) 10%, var(--surface)); }
+
+    .side-stack { display: grid; gap: 18px; }
+
+    .mini-card {
+      min-height: 155px;
+    }
+
+    .mini-card .label {
+      margin-bottom: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .list li {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 570;
+    }
+
+    .list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      margin-top: .45em;
+      border: 2px solid var(--line);
+      background: var(--blue);
+      transform: rotate(45deg);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 22px;
+      padding: 22px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 8px 8px 0 var(--line);
+    }
+
+    .experience-meta {
+      display: grid;
+      align-content: start;
+      gap: 14px;
+    }
+
+    .time {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--blue);
+      text-transform: uppercase;
+      line-height: 1.45;
+    }
+
+    .company-logo-slot {
+      position: relative;
+      width: 176px;
+      min-height: 120px;
+      margin: 0;
+      border: 2px dashed var(--line);
+      border-radius: 18px;
+      background:
+        repeating-linear-gradient(-45deg,
+          color-mix(in srgb, var(--line) 8%, transparent) 0 10px,
+          transparent 10px 22px),
+        color-mix(in srgb, var(--surface) 85%, var(--yellow) 10%);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .company-logo-slot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 18px;
+      background: var(--surface);
+      z-index: 2;
+    }
+
+    .company-logo-slot figcaption {
+      width: calc(100% - 22px);
+      display: grid;
+      place-items: center;
+      gap: 6px;
+      padding: 12px 10px;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      text-align: center;
+      box-shadow: 4px 4px 0 var(--line);
+      z-index: 1;
+    }
+
+    .company-logo-slot strong {
+      font-size: .84rem;
+      line-height: 1.15;
+    }
+
+    .company-logo-slot span {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .company-logo-slot code {
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    .timeline-item h3 { font-size: clamp(1.4rem, 2vw, 2rem); margin-bottom: 8px; }
+
+    .skills-layout {
+      grid-template-columns: .95fr 1.05fr;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .skill {
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: color-mix(in srgb, var(--surface) 88%, white 6%);
+    }
+
+    .skill strong { display: block; margin-bottom: 10px; }
+
+    .bar {
+      height: 12px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .bar span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--blue);
+      transition: width 1.1s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .credential-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .credential {
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .credential strong {
+      font-size: 1.08rem;
+      line-height: 1.25;
+    }
+
+    .credential small {
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .certification-gallery {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .certification-card {
+      grid-column: span 4;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      padding: 16px;
+      min-height: 430px;
+    }
+
+    .certification-card.featured {
+      grid-column: span 6;
+    }
+
+    .certification-media {
+      min-height: unset;
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--yellow) 20%, transparent), transparent 42%),
+        repeating-linear-gradient(-45deg,
+          color-mix(in srgb, var(--line) 7%, transparent) 0 10px,
+          transparent 10px 22px),
+        color-mix(in srgb, var(--surface) 90%, white 5%);
+    }
+
+    .certificate-img {
+      object-fit: contain;
+      background: color-mix(in srgb, var(--surface) 92%, white 6%);
+      padding: 10px;
+    }
+
+    .certification-card h3 {
+      margin: 0;
+      font-size: clamp(1.08rem, 1.8vw, 1.45rem);
+      letter-spacing: -.04em;
+    }
+
+    .certification-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: .92rem;
+      font-weight: 620;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .contact-card .body-text { color: color-mix(in srgb, var(--bg) 78%, transparent); }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border: 2px solid color-mix(in srgb, var(--bg) 80%, transparent);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-weight: 900;
+      transition: 160ms ease;
+    }
+
+    .contact-links a:hover {
+      background: var(--yellow);
+      color: #111111;
+      transform: translateX(4px);
+    }
+
+    .footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      border-top: 2px solid color-mix(in srgb, var(--line) 22%, transparent);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu { display: none; }
+
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .about-layout,
+      .bento,
+      .skills-layout,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .shot-card.large,
+      .shot-card.medium,
+      .shot-card.small,
+      .shot-card.half {
+        grid-column: span 12;
+      }
+
+      .hero { padding-top: 58px; }
+      .hero-panel { min-height: 520px; }
+      .metrics, .credential-grid { grid-template-columns: repeat(2, 1fr); }
+      .certification-card,
+      .certification-card.featured { grid-column: span 6; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .company-logo-slot { width: min(100%, 220px); }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        border-radius: 24px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        top: 64px;
+        padding: 12px;
+        border: 2px solid var(--line);
+        border-radius: 20px;
+        background: var(--surface);
+        flex-direction: column;
+        align-items: stretch;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { border-color: var(--line); }
+      .mobile-menu { display: inline-flex; }
+      .desktop-toggle { display: none; }
+      .hero { min-height: unset; }
+      .terminal { inset: 16px; }
+      .terminal-body { padding: 14px; }
+      .architecture, .metrics, .credential-grid, .skill-grid, .intro-facts { grid-template-columns: 1fr; }
+      .certification-gallery { grid-template-columns: 1fr; }
+      .certification-card,
+      .certification-card.featured { grid-column: auto; }
+      .media-slot.tall { min-height: 420px; }
+      .section { padding: 56px 0; }
+      .card { padding: 18px; }
+    }
+
+    @media print {
+      .nav, .cta-row, .footer { display: none; }
+      body { background: #fff; color: #000; }
+      .section { page-break-inside: avoid; }
+      .card, .timeline-item, .hero-panel { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#top" class="brand" aria-label="Go to top">
+        <span class="brand-mark">LZC</span>
+        <span>Liew Zhen Chuan</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#demo">Demo</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="toggle desktop-toggle" id="themeToggle" type="button">Mode</button>
+      <button class="toggle mobile-menu" id="menuToggle" type="button">Menu</button>
+    </nav>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <div class="kicker"><span class="dot"></span> Graduate AI Engineer Candidate</div>
+          <h1>AI Systems.<br><span>Quant Logic.</span><br>Clean Interfaces.</h1>
+          <p class="lead">
+            Final-year Computer Science student specializing in Artificial Intelligence and Data Science, with enterprise IT operations experience at OCBC Bank Headquarters and a track record of building full-stack AI-powered systems. I build practical AI products that connect machine learning, data pipelines, backtesting discipline, and human-readable interfaces.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Technical Projects</a>
+            <a class="btn secondary" href="mailto:liewzhenchuan6@gmail.com">Contact Me</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Portfolio system preview">
+          <div class="terminal">
+            <div class="terminal-top">
+              <div class="lights"><i></i><i></i><i></i></div>
+              <span>portfolio.kernel</span>
+            </div>
+            <div class="terminal-body">
+              <canvas id="marketCanvas" width="760" height="260" aria-label="Animated market-style system graph"></canvas>
+              <div class="code-line"><strong>profile</strong> = { role: <span class="blue">"Graduate AI Engineer"</span>, focus: <span class="red">"AI x Systems"</span> }</div>
+              <div class="code-line"><strong>core_stack</strong> = ["Python", "TypeScript", "SQL", "PyTorch", "Scikit-learn", "LLM APIs"]</div>
+              <div class="code-line"><strong>current_project</strong> = <span class="green">"QuantForge Pro — AI-assisted backtesting platform"</span></div>
+              <div class="code-line"><strong>engineering_bias</strong> = "auditability, execution realism, clean UX"</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section reveal" aria-label="Key metrics">
+        <div class="grid metrics">
+          <article class="card metric-card">
+            <div class="metric-number"><span data-count="3.18">0</span></div>
+            <div class="metric-label">Current CGPA / 4.00</div>
+          </article>
+          <article class="card metric-card">
+            <div class="metric-number"><span data-count="3.80">0</span></div>
+            <div class="metric-label">Dean's List Semester GPA (February 2026)</div>
+          </article>
+          <article class="card metric-card">
+            <div class="metric-number"><span data-count="7">0</span>+</div>
+            <div class="metric-label">Cloud, AI, Data & Oracle Certifications</div>
+          </article>
+          <article class="card metric-card">
+            <div class="metric-number"><span data-count="2026">0</span></div>
+            <div class="metric-label">Expected Graduation Year (October 2026)</div>
+          </article>
+        </div>
+      </section>
+
+
+
+      <section class="section reveal" id="about">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 / About Me</p>
+            <h2>Applied AI builder with product mindset.</h2>
+          </div>
+          <p class="section-copy">
+            A concise profile of my technical direction, project strengths, and the engineering mindset I bring to applied AI, data systems, and production-aware software development.
+          </p>
+        </div>
+
+        <div class="grid about-layout">
+          <article class="card portrait-card block-shadow">
+            <div class="project-tag">Professional Profile</div>
+            <figure class="media-slot tall" aria-label="Profile photo">
+              <img class="slot-img profile-img" src="images/profile-photo.jpg" alt="Portrait photo of Liew Zhen Chuan" onerror="this.style.display='none'">
+              <div class="slot-empty">
+                <strong>Liew Zhen Chuan</strong>
+                <span>Graduate AI Engineer Candidate · Applied AI · Data Science · Full-Stack Systems</span>
+              </div>
+            </figure>
+            <p class="slot-note"></p>
+          </article>
+
+          <article class="card intro-card">
+            <div class="project-tag">My Introduction</div>
+            <h3>Hi, I'm Liew Zhen Chuan.</h3>
+            <p class="body-text">
+              I am a Bachelor of Computer Science (Honours) student at Universiti Tunku Abdul Rahman, focused on Artificial Intelligence, Data Science, and full-stack software engineering. My work sits at the intersection of machine learning, financial technology, backtesting systems, and user-facing analytical interfaces.
+            </p>
+            <p class="body-text">
+              My strongest current project is QuantForge Pro, an AI-assisted stock and cryptocurrency analytical platform designed to help retail users move from market observation to more disciplined strategy validation. I care about building systems that are not only visually polished, but also explainable, testable, and honest about execution assumptions.
+            </p>
+            <p class="body-text">
+              As a graduate AI engineer candidate, I want to contribute to teams building practical AI products, data-driven decision systems, LLM-integrated workflows, and production-aware software platforms. I bring a mix of AI learning, hands-on project execution, enterprise IT exposure, and a strong habit of improving technical quality step by step.
+            </p>
+
+            <div class="intro-facts">
+              <div class="fact-tile"><strong>Focus Area</strong><span>Applied AI, ML systems, backtesting, data products, and technical dashboards.</span></div>
+              <div class="fact-tile"><strong>Engineering Style</strong><span>Clean UI, modular architecture, auditability, readable evidence, and disciplined testing.</span></div>
+              <div class="fact-tile"><strong>Career Target</strong><span>Graduate AI Engineer, Data Scientist, or Software Engineer roles.</span></div>
+              <div class="fact-tile"><strong>Portfolio Angle</strong><span>Show practical product-building ability, not only coursework or certificates.</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="work">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 / Professional Signal</p>
+            <h2>Enterprise-ready mindset.</h2>
+          </div>
+          <p class="section-copy">
+            My background combines AI engineering coursework, final-year product architecture, enterprise IT support, retail customer engagement, and hands-on operations work. That mix matters: AI engineers need more than models. They need secure systems, reliable data paths, clear debugging habits, user empathy, and responsible deployment thinking.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="experience-meta">
+              <div class="time">2026<br>UTAR Final Year Project</div>
+              <figure class="company-logo-slot" aria-label="QuantForge Pro or FYP logo placeholder">
+                <img src="images/quantforge-logo.png" alt="QuantForge Pro logo" onerror="this.style.display='none'">
+                <figcaption><strong>FYP Logo</strong><span>Put your logo at<br><code>images/quantforge-logo.png</code></span></figcaption>
+              </figure>
+            </div>
+            <div>
+              <h3>Lead Software Developer & Architect · QuantForge Pro</h3>
+              <p class="body-text">
+                Designed and built an AI-assisted quantitative backtesting platform that connects historical market data, strategy configuration, sandbox simulation, audit verification, and comparative run management. The project focuses on realistic backtesting discipline, including close-of-bar decision logic, next-bar-open execution, slippage and commission awareness, risk metrics, and interpretable result evidence.
+              </p>
+              <div class="pill-row">
+                <span class="pill">React</span>
+                <span class="pill">TypeScript</span>
+                <span class="pill">IndexedDB</span>
+                <span class="pill">Web Workers</span>
+                <span class="pill">AI APIs</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="experience-meta">
+              <div class="time">Oct 2025 — Jan 2026<br>OCBC Bank HQ</div>
+              <figure class="company-logo-slot" aria-label="OCBC Bank or CTC Global logo placeholder">
+                <img src="images/ocbc-logo.png" alt="OCBC Bank / CTC Global logo" onerror="this.style.display='none'">
+                <figcaption><strong>Company Logo</strong><span>Put your logo at<br><code>images/ocbc-logo.png</code></span></figcaption>
+              </figure>
+            </div>
+            <div>
+              <h3>IT Support Engineer Intern · CTC Global / OCBC Bank Headquarters</h3>
+              <p class="body-text">
+                Delivered Tier 1 and Tier 2 troubleshooting across hardware, software, network, domain integration, and endpoint deployments. Supported high-availability banking operations, handled Network Access Control through ForeScout, and contributed to IT asset audit analytics using Microsoft Power Apps and Excel dashboards.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Enterprise IT</span>
+                <span class="pill">NAC / ForeScout</span>
+                <span class="pill">Data Dashboards</span>
+                <span class="pill">Operations Reliability</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="experience-meta">
+              <div class="time">Dec 2024 — Feb 2025<br>YongSheng Gift Shop</div>
+              <figure class="company-logo-slot" aria-label="YongSheng Gift Shop logo placeholder">
+                <img src="images/yongsheng-logo.png" alt="YongSheng Gift Shop logo" onerror="this.style.display='none'">
+                <figcaption><strong>Company Logo</strong><span>Put your logo at<br><code>images/yongsheng-logo.png</code></span></figcaption>
+              </figure>
+            </div>
+            <div>
+              <h3>Product Promoter · YongSheng Gift Shop</h3>
+              <p class="body-text">
+                Promoted signature gift and retail products in a fast-paced customer-facing environment. Engaged walk-in customers, explained product features clearly, supported daily sales targets, and helped maintain organized product displays, stock visibility, and a welcoming shopping experience during peak commercial periods.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Retail Sales</span>
+                <span class="pill">Customer Engagement</span>
+                <span class="pill">Product Presentation</span>
+                <span class="pill">Store Operations</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="experience-meta">
+              <div class="time">Dec 2023 — Feb 2024<br>Biogreen Organic</div>
+              <figure class="company-logo-slot" aria-label="Biogreen Organic logo placeholder">
+                <img src="images/biogreen-logo.png" alt="Biogreen Organic logo" onerror="this.style.display='none'">
+                <figcaption><strong>Company Logo</strong><span>Put your logo at<br><code>images/biogreen-logo.png</code></span></figcaption>
+              </figure>
+            </div>
+            <div>
+              <h3>Product Promoter · Biogreen Organic</h3>
+              <p class="body-text">
+                Consulted retail customers on organic health products by understanding basic dietary needs, explaining product benefits, and recommending suitable options. Supported product education, customer trust building, inventory monitoring, stock replenishment, and well-organized in-store product displays.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Consultative Selling</span>
+                <span class="pill">Product Education</span>
+                <span class="pill">Health Products</span>
+                <span class="pill">Inventory Support</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item no-logo-item">
+            <div class="experience-meta">
+              <div class="time">Mar 2022 — May 2022<br>Best Truss Steel Roofing System</div>
+            </div>
+            <div>
+              <h3>Apprentice · Best Truss Steel Roofing System</h3>
+              <p class="body-text">
+                Operated and maintained manual milling machines for precision metal fabrication. Assisted with technical drawing interpretation and translation into machining operations, developing attention to detail, safety awareness, and a practical understanding of manual manufacturing workflows.
+              </p>
+              <div class="pill-row">
+                <span class="pill">Manufacturing Support</span>
+                <span class="pill">Manual Milling</span>
+                <span class="pill">Technical Drawing</span>
+                <span class="pill">Precision Work</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="projects">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 / Featured Build</p>
+            <h2>From trading idea to audited evidence.</h2>
+          </div>
+          <p class="section-copy">
+            QuantForge Pro is my strongest technical project because it forces software engineering, AI integration, financial data discipline, and product design to work together. The design goal is simple: help users avoid blind prediction and evaluate strategy quality through evidence.
+          </p>
+        </div>
+
+        <div class="grid bento">
+          <article class="card block-shadow project-main">
+            <div class="project-tag">Flagship Project</div>
+            <h3>QuantForge Pro — AI-Assisted Stock & Cryptocurrency Backtesting Platform</h3>
+            <p class="body-text">
+              A cross-platform analytical system for retail investors and beginner traders. It integrates historical market data retrieval, feature preparation, AI-assisted sentiment and contextual support, strategy configuration, sandbox backtesting, audit-aware verification, and research workflow persistence.
+            </p>
+            <div class="architecture" aria-label="QuantForge Pro architecture blocks">
+              <div class="node"><strong>Data Sync</strong><small>Historical candles, range coverage, caching, validation.</small></div>
+              <div class="node"><strong>Feature Engine</strong><small>Precomputed indicators and execution-ready slices.</small></div>
+              <div class="node"><strong>AI Context</strong><small>Market sentiment and narrative support through AI APIs.</small></div>
+              <div class="node"><strong>Execution Kernel</strong><small>Bar-by-bar signals, order simulation, fills, equity updates.</small></div>
+              <div class="node"><strong>Audit Layer</strong><small>Trade ledger reconstruction, sanity checks, integrity checks.</small></div>
+              <div class="node"><strong>Research UX</strong><small>Metrics, charts, run registry, comparison matrix.</small></div>
+            </div>
+            <div class="pill-row">
+              <span class="pill">Look-ahead Control</span>
+              <span class="pill">Sharpe Ratio</span>
+              <span class="pill">Maximum Drawdown</span>
+              <span class="pill">Slippage / Fees</span>
+              <span class="pill">Run Comparison</span>
+            </div>
+          </article>
+
+          <div class="side-stack">
+            <article class="card mini-card">
+              <div class="label">System Principle</div>
+              <h3>Prediction is not enough.</h3>
+              <p class="body-text">The platform treats forecasting as one input inside a broader workflow of execution simulation, risk evaluation, verification, and result interpretation.</p>
+            </article>
+            <article class="card mini-card">
+              <div class="label">Execution Contract</div>
+              <h3>Close-of-bar decision, next-bar-open execution.</h3>
+              <p class="body-text">Signals are generated using available bar information and executed later, reducing ambiguity and strengthening backtest validity.</p>
+            </article>
+            <article class="card mini-card">
+              <div class="label">Second Project</div>
+              <h3>Employee Salary Prediction System</h3>
+              <p class="body-text">Built classification models using Random Forest and XGBoost with feature engineering and evaluation through F1 Score, Precision, and Recall.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="section reveal" id="demo">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 / Demo Evidence</p>
+            <h2>Project evidence and system walkthrough.</h2>
+          </div>
+          <p class="section-copy">
+            Selected interface evidence from my technical projects, showing how the systems support data analysis, model evaluation, backtesting workflow, and user-facing decision support.
+          </p>
+        </div>
+
+        <div class="demo-block">
+          <div class="demo-title-row">
+            <h3>QuantForge Pro Demo Gallery</h3>
+            <span class="demo-count">5 system views</span>
+          </div>
+          <div class="shot-grid">
+            <article class="card shot-card large">
+              <figure class="media-slot wide" aria-label="QuantForge Pro screenshot 1">
+                <img class="slot-img shot-img" src="images/quantforge-demo-01.png" alt="QuantForge Pro main dashboard screenshot" onerror="this.style.display='none'">
+                <div class="slot-empty"><strong>Main Dashboard</strong><span>Analytical workspace with charting, strategy controls, and AI-assisted context.</span></div>
+              </figure>
+              <h3>Main Analytical Dashboard</h3>
+              <p>Shows the full analytical workspace, including charting, strategy context, configuration controls, and technical visual hierarchy.</p>
+            </article>
+
+            <article class="card shot-card medium">
+              <figure class="media-slot wide" aria-label="QuantForge Pro screenshot 2">
+                <img class="slot-img shot-img" src="images/quantforge-demo-02.png" alt="QuantForge Pro AI-assisted market sentiment intelligence console screenshot" onerror="this.style.display='none'">
+                <div class="slot-empty"><strong>AI-Assisted Market Sentiment</strong><span>Sentiment console with market bias, confidence, volatility risk, live news feed, macro context, and AI availability status.</span></div>
+              </figure>
+              <h3>AI-Assisted Market Sentiment</h3>
+              <p>Shows the sentiment intelligence layer: market news is converted into bullish, bearish, or neutral signals, then summarized into market bias, confidence, risk state, and macro context. The panel also keeps the AI advisory status transparent when the provider is unavailable because of quota or rate limits.</p>
+            </article>
+
+            <article class="card shot-card small">
+              <figure class="media-slot wide" aria-label="QuantForge Pro screenshot 3">
+                <img class="slot-img shot-img" src="images/quantforge-demo-03.png" alt="QuantForge Pro performance metrics screenshot" onerror="this.style.display='none'">
+                <div class="slot-empty"><strong>Performance Metrics</strong><span>Risk and result telemetry for disciplined strategy evaluation.</span></div>
+              </figure>
+              <h3>Performance Metrics</h3>
+              <p>Presents key risk and performance indicators such as return, drawdown, win rate, Sharpe Ratio, and trade outcome quality.</p>
+            </article>
+
+            <article class="card shot-card small">
+              <figure class="media-slot wide" aria-label="QuantForge Pro screenshot 4">
+                <img class="slot-img shot-img" src="images/quantforge-demo-04.png" alt="QuantForge Pro trade ledger screenshot" onerror="this.style.display='none'"> 
+                <div class="slot-empty"><strong>Trade Evidence</strong><span>Order-level trade ledger, simulated fills, and audit trail.</span></div>
+              </figure>
+              <h3>Trade Evidence</h3>
+              <p>Demonstrates order-level evidence, trade reconstruction, simulated fills, and the audit trail behind each backtest result.</p>
+            </article>
+
+            <article class="card shot-card small">
+              <figure class="media-slot wide" aria-label="QuantForge Pro screenshot 5">
+                <img class="slot-img shot-img" src="images/quantforge-demo-05.png" alt="QuantForge Pro run comparison screenshot" onerror="this.style.display='none'">
+                <div class="slot-empty"><strong>Research Workflow</strong><span>Saved runs, comparison matrix, and AI-assisted interpretation.</span></div>
+              </figure>
+              <h3>Research Workflow</h3>
+              <p>Shows saved experiments, run comparison, research workflow continuity, and AI-assisted interpretation surfaces.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="demo-block">
+          <div class="demo-title-row">
+            <h3>Employee Salary Prediction Gallery</h3>
+            <span class="demo-count">2 ML views</span>
+          </div>
+          <div class="shot-grid">
+            <article class="card shot-card half">
+              <figure class="media-slot wide" aria-label="Salary prediction screenshot 1">
+                <img class="slot-img shot-img" src="images/salary-prediction-01.png" alt="Employee Salary Prediction model workflow screenshot" onerror="this.style.display='none'">
+                <div class="slot-empty"><strong>Model Workflow</strong><span>Dataset preparation, feature engineering, and training pipeline.</span></div>
+              </figure>
+              <h3>Model Workflow</h3>
+              <p>Shows dataset preparation, feature engineering, model training flow, and the structure of the machine-learning workflow.</p>
+            </article>
+
+            <article class="card shot-card half">
+              <figure class="media-slot wide" aria-label="Salary prediction screenshot 2">
+                <img class="slot-img shot-img" src="images/salary-prediction-02.png" alt="Employee Salary Prediction evaluation results screenshot" onerror="this.style.display='none'">
+                <div class="slot-empty"><strong>Evaluation Results</strong><span>Model comparison, metrics, confusion matrix, and prediction output.</span></div>
+              </figure>
+              <h3>Evaluation Results</h3>
+              <p>Presents classification results, model comparison, F1 Score, Precision, Recall, confusion matrix, and final prediction output.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="skills">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 / Technical Stack</p>
+            <h2>AI plus software architecture.</h2>
+          </div>
+          <p class="section-copy">
+            I am strongest where machine learning meets implementation: data preparation, model evaluation, API integration, browser-side performance, and clean product interfaces. My current direction is to grow into an AI engineer who can ship reliable, explainable, production-aware systems.
+          </p>
+        </div>
+
+        <div class="grid skills-layout">
+          <article class="card block-shadow">
+            <h3>Core Engineering Profile</h3>
+            <ul class="list">
+              <li>Programming: Python, TypeScript, SQL, Java, C++, HTML.</li>
+              <li>Machine learning: Pandas, NumPy, Matplotlib, Scikit-learn, PyTorch.</li>
+              <li>LLM and AI: OpenAI API, Google Gemini API, local LLMs, prompt engineering, Oracle Generative AI.</li>
+              <li>Web architecture: React, IndexedDB, Web Workers, modular frontend design.</li>
+              <li>Cloud and databases: Oracle Cloud Infrastructure, AWS Cloud Foundations, MySQL, Oracle Database.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Skill Map</h3>
+            <p class="body-text">Relative strengths based on current project work, coursework, internship exposure, and certifications.</p>
+            <div class="skill-grid">
+              <div class="skill"><strong>Python / ML</strong><div class="bar"><span data-width="88"></span></div></div>
+              <div class="skill"><strong>TypeScript / React</strong><div class="bar"><span data-width="82"></span></div></div>
+              <div class="skill"><strong>SQL / Data</strong><div class="bar"><span data-width="84"></span></div></div>
+              <div class="skill"><strong>LLM Integration</strong><div class="bar"><span data-width="80"></span></div></div>
+              <div class="skill"><strong>Cloud Foundations</strong><div class="bar"><span data-width="72"></span></div></div>
+              <div class="skill"><strong>System Design</strong><div class="bar"><span data-width="78"></span></div></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="credentials">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">06 / Education & Credentials</p>
+            <h2>Academic base with applied proof.</h2>
+          </div>
+          <p class="section-copy">
+            My academic path is focused on AI, data science, machine learning, deep learning, database systems, cloud computing, and software engineering fundamentals. The certifications reinforce that direction with vendor-backed AI, cloud, data, and database foundations.
+          </p>
+        </div>
+
+        <div class="grid credential-grid">
+          <article class="card credential">
+            <strong>Bachelor of Computer Science (Honours)</strong>
+            <small>Universiti Tunku Abdul Rahman · Expected Graduation: October 2026 · Current CGPA: 3.18 / 4.00 · Dean's List recipient.</small>
+          </article>
+          <article class="card credential">
+            <strong>Oracle Certified Professional</strong>
+            <small>Generative AI · Data Science · AI Vector Search · APEX Cloud Developer.</small>
+          </article>
+          <article class="card credential">
+            <strong>Oracle Certified Associate & Foundations</strong>
+            <small>AI Foundations · Data Platform Foundations.</small>
+          </article>
+          <article class="card credential">
+            <strong>AWS Academy Cloud Foundations</strong>
+            <small>Cloud fundamentals, infrastructure concepts, and cloud service awareness.</small>
+          </article>
+          <article class="card credential">
+            <strong>Relevant Coursework</strong>
+            <small>Deep Learning · Data Mining and Machine Learning · AI Techniques · Data Science · Algorithms · OOP · DB Systems · Cloud Computing.</small>
+          </article>
+          <article class="card credential">
+            <strong>Languages & Community</strong>
+            <small>Chinese native · English professional working proficiency · Malay professional working proficiency · YiChuan 4.0 Cultural Event committee member.</small>
+          </article>
+        </div>
+      </section>
+
+
+
+      <section class="section reveal" id="certifications">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">07 / Certification Gallery</p>
+            <h2>Verified certifications and learning proof.</h2>
+          </div>
+          <p class="section-copy">
+            Certification evidence supporting my AI, data science, cloud, database, and software development foundation across Oracle and AWS learning paths.
+          </p>
+        </div>
+
+        <div class="certification-gallery">
+          <article class="card certification-card featured">
+            <figure class="media-slot certification-media" aria-label="Certification image 1">
+              <img class="slot-img certificate-img" src="images/certification-01.png" alt="Oracle Generative AI certification image" onerror="this.style.display='none'">
+              <div class="slot-empty"><strong>Oracle Generative AI</strong><span>Certification evidence in generative AI foundations and AI solution awareness.</span></div>
+            </figure>
+            <h3>Oracle Generative AI</h3>
+            <p>Validates applied understanding of generative AI concepts, prompt-driven workflows, and AI solution awareness.</p>
+          </article>
+
+          <article class="card certification-card featured">
+            <figure class="media-slot certification-media" aria-label="Certification image 2">
+              <img class="slot-img certificate-img" src="images/certification-02.jpg" alt="Oracle Data Science certification image" onerror="this.style.display='none'">
+              <div class="slot-empty"><strong>Oracle Data Science</strong><span>Certification evidence in data science workflow and analytical model development.</span></div>
+            </figure>
+            <h3>Oracle Data Science</h3>
+            <p>Supports my foundation in data science workflow, model development concepts, and analytical problem solving.</p>
+          </article>
+
+          <article class="card certification-card">
+            <figure class="media-slot certification-media" aria-label="Certification image 3">
+              <img class="slot-img certificate-img" src="images/certification-03.jpg" alt="Oracle AI Vector Search certification image" onerror="this.style.display='none'">
+              <div class="slot-empty"><strong>Oracle AI Vector Search</strong><span>Certification evidence in vector search and AI-ready data retrieval.</span></div>
+            </figure>
+            <h3>Oracle AI Vector Search</h3>
+            <p>Shows exposure to vector-based retrieval concepts, semantic search, and AI-ready database capabilities.</p>
+          </article>
+
+          <article class="card certification-card">
+            <figure class="media-slot certification-media" aria-label="Certification image 4">
+              <img class="slot-img certificate-img" src="images/certification-04.jpg" alt="Oracle APEX Cloud Developer certification image" onerror="this.style.display='none'">
+              <div class="slot-empty"><strong>Oracle APEX Cloud Developer</strong><span>Certification evidence in cloud application development fundamentals.</span></div>
+            </figure>
+            <h3>Oracle APEX Cloud Developer</h3>
+            <p>Demonstrates low-code cloud application development awareness and database-backed application delivery.</p>
+          </article>
+
+          <article class="card certification-card">
+            <figure class="media-slot certification-media" aria-label="Certification image 5">
+              <img class="slot-img certificate-img" src="images/certification-05.jpg" alt="Oracle AI Foundations certification image" onerror="this.style.display='none'">
+              <div class="slot-empty"><strong>Oracle AI Foundations</strong><span>Certification evidence in AI concepts, applications, and responsible use.</span></div>
+            </figure>
+            <h3>Oracle AI Foundations</h3>
+            <p>Strengthens my baseline understanding of AI concepts, use cases, and responsible implementation considerations.</p>
+          </article>
+
+          <article class="card certification-card">
+            <figure class="media-slot certification-media" aria-label="Certification image 6">
+              <img class="slot-img certificate-img" src="images/certification-06.jpg" alt="Oracle Data Platform Foundations certification image" onerror="this.style.display='none'">
+              <div class="slot-empty"><strong>Oracle Data Platform Foundations</strong><span>Certification evidence in database, cloud data, and platform fundamentals.</span></div>
+            </figure>
+            <h3>Oracle Data Platform Foundations</h3>
+            <p>Covers modern data platform fundamentals, database services, and cloud-based data management concepts.</p>
+          </article>
+
+          <article class="card certification-card">
+            <figure class="media-slot certification-media" aria-label="Certification image 7">
+              <img class="slot-img certificate-img" src="images/certification-07.jpg" alt="AWS Academy Cloud Foundations certification image" onerror="this.style.display='none'">
+              <div class="slot-empty"><strong>AWS Academy Cloud Foundations</strong><span>Certification evidence in cloud infrastructure and service fundamentals.</span></div>
+            </figure>
+            <h3>AWS Academy Cloud Foundations</h3>
+            <p>Covers cloud computing fundamentals, infrastructure concepts, and service-level awareness for modern application deployment.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="contact">
+        <div class="contact">
+          <article class="card contact-card block-shadow">
+            <p class="eyebrow" style="color: var(--yellow);">08 / Contact</p>
+            <h2>Let's build AI systems that are useful, testable, and honest.</h2>
+            <p class="body-text" style="margin-top: 22px;">
+              I am seeking Graduate AI Engineer, Data Scientist, or Software Engineer opportunities where I can work on applied AI, data systems, LLM integration, and production-grade software architecture.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:liewzhenchuan6@gmail.com">liewzhenchuan6@gmail.com <span>↗</span></a>
+              <a href="tel:+601157608955">+60 11-5760 8955 <span>↗</span></a>
+              <a href="https://www.linkedin.com/in/liewzhenchuan" target="_blank" rel="noreferrer">LinkedIn Profile <span>↗</span></a>
+            </div>
+          </article>
+
+          <article class="card block-shadow">
+            <h3>What I bring to a graduate AI team</h3>
+            <ul class="list">
+              <li>Ability to connect model outputs with practical product workflows instead of treating AI as a standalone feature.</li>
+              <li>Strong bias toward verifiable systems: logs, audit trails, metric consistency, and clear user-facing evidence.</li>
+              <li>Experience working with enterprise IT constraints, security awareness, and operational reliability.</li>
+              <li>Frontend engineering taste: minimal visual hierarchy, clear dashboards, responsive UI, and data-dense layouts.</li>
+              <li>High learning velocity across AI APIs, machine learning tooling, cloud foundations, and full-stack architecture.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Liew Zhen Chuan. Portfolio built as a single-file HTML system.</span>
+      <span>Minimalism · Bauhaus · AI Engineering · Quant Systems</span>
+    </footer>
+  </div>
+
+  <script>
+    const body = document.body;
+    const themeButton = document.getElementById('themeToggle');
+    const menuButton = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function toggleTheme() {
+      body.classList.toggle('dark');
+      localStorage.setItem('lzc-theme', body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    if (localStorage.getItem('lzc-theme') === 'dark') {
+      body.classList.add('dark');
+    }
+
+    themeButton.addEventListener('click', toggleTheme);
+    menuButton.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const countObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const target = entry.target;
+        const end = parseFloat(target.dataset.count);
+        const decimals = String(target.dataset.count).includes('.') ? 2 : 0;
+        const duration = 1000;
+        const startTime = performance.now();
+
+        function animate(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = end * eased;
+          target.textContent = value.toFixed(decimals);
+          if (progress < 1) requestAnimationFrame(animate);
+          else target.textContent = end.toFixed(decimals);
+        }
+
+        requestAnimationFrame(animate);
+        observer.unobserve(target);
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+    const skillObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('[data-width]').forEach(bar => {
+          bar.style.width = `${bar.dataset.width}%`;
+        });
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.skill-grid').forEach(el => skillObserver.observe(el));
+
+    const canvas = document.getElementById('marketCanvas');
+    const ctx = canvas.getContext('2d');
+    let t = 0;
+
+    function drawMarket() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const isDark = body.classList.contains('dark');
+      const ink = isDark ? '#f7f2e8' : '#111111';
+      const blue = '#155dfc';
+      const red = '#e23d28';
+      const yellow = '#f1c232';
+
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = isDark ? 'rgba(247,242,232,.12)' : 'rgba(17,17,17,.13)';
+      for (let x = 0; x < w; x += 40) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+      }
+      for (let y = 0; y < h; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+
+      const points = [];
+      for (let i = 0; i < 80; i++) {
+        const x = (i / 79) * w;
+        const y = h * 0.56 + Math.sin(i * .35 + t) * 28 + Math.cos(i * .12 + t * .8) * 36 - Math.sin(i * .06 + t * .2) * 42;
+        points.push([x, y]);
+      }
+
+      ctx.lineWidth = 5;
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = blue;
+      ctx.beginPath();
+      points.forEach(([x, y], index) => index ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+      ctx.stroke();
+
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = ink;
+      ctx.beginPath();
+      points.forEach(([x, y], index) => index ? ctx.lineTo(x, y + 18) : ctx.moveTo(x, y + 18));
+      ctx.stroke();
+
+      for (let i = 8; i < points.length; i += 12) {
+        const [x, y] = points[i];
+        ctx.fillStyle = i % 24 === 0 ? red : yellow;
+        ctx.strokeStyle = ink;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.rect(x - 7, y - 7, 14, 14);
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      ctx.font = 'bold 16px Consolas, monospace';
+      ctx.fillStyle = ink;
+      ctx.fillText('AUDITED BACKTEST SIGNAL', 20, 34);
+      ctx.font = '12px Consolas, monospace';
+      ctx.fillText('close-of-bar → next-bar-open', 20, 55);
+
+      t += 0.018;
+      requestAnimationFrame(drawMarket);
+    }
+
+    drawMarket();
+  </script>
+</body>
+</html>
